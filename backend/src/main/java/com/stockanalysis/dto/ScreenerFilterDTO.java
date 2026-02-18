@@ -17,6 +17,9 @@ public class ScreenerFilterDTO {
     @Builder.Default
     private List<Condition> conditions = new ArrayList<>();
 
+    @Builder.Default
+    private List<ScreenerRuleDTO> rules = new ArrayList<>();
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
