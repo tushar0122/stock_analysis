@@ -4,6 +4,7 @@ import stockService from '../../services/stockService';
 import Loading from '../Common/Loading';
 import ErrorMessage from '../Common/ErrorMessage';
 import StockCard from './StockCard';
+import AddStockModal from './AddStockModal';
 import '../../styles/stocks.css';
 
 const StockList = () => {
@@ -13,6 +14,8 @@ const StockList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [isAddStockModalOpen, setIsAddStockModalOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     fetchStocks();
@@ -44,12 +47,36 @@ const StockList = () => {
     setPage(0);
   };
 
+  const handleAddStockSuccess = () => {
+    setSuccessMessage('Stock added successfully!');
+    setPage(0);
+    fetchStocks();
+    setTimeout(() => setSuccessMessage(''), 5000);
+  };
+
+  const handleOpenAddStockModal = () => {
+    setIsAddStockModalOpen(true);
+  };
+
+  const handleCloseAddStockModal = () => {
+    setIsAddStockModalOpen(false);
+  };
+
   if (loading) return <Loading message="Loading stocks..." />;
 
   return (
     <div className="stocks-container">
       <div className="stocks-header">
-        <h1>Stock List</h1>
+        <div className="stocks-title-section">
+          <h1>Stock List</h1>
+          <button 
+            className="btn-add-stock"
+            onClick={handleOpenAddStockModal}
+            title="Add a new stock"
+          >
+            + Add Stock
+          </button>
+        </div>
         <input
           type="text"
           placeholder="Search by name or symbol..."
@@ -59,7 +86,25 @@ const StockList = () => {
         />
       </div>
 
+      {successMessage && (
+        <div className="success-message">
+          {successMessage}
+          <button 
+            onClick={() => setSuccessMessage('')}
+            className="close-btn"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       <ErrorMessage message={error} onClose={() => setError('')} />
+
+      <AddStockModal 
+        isOpen={isAddStockModalOpen}
+        onClose={handleCloseAddStockModal}
+        onSuccess={handleAddStockSuccess}
+      />
 
       <div className="stocks-grid">
         {stocks.length > 0 ? (

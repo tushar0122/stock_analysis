@@ -13,9 +13,40 @@
   flex-wrap: wrap;
 }
 
-.stocks-header h1 {
+.stocks-title-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
   flex: 1;
-  min-width: 200px;
+  min-width: 300px;
+}
+
+.stocks-header h1 {
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.btn-add-stock {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-add-stock:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.btn-add-stock:active {
+  transform: translateY(0);
 }
 
 .search-input {
@@ -25,6 +56,44 @@
   border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 14px;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #28a745;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.success-message .close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #155724;
+  padding: 0 5px;
+  transition: opacity 0.2s;
+}
+
+.success-message .close-btn:hover {
+  opacity: 0.7;
 }
 
 .stocks-grid {
@@ -176,4 +245,78 @@
   color: var(--secondary-color);
   background-color: white;
   border-radius: 8px;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stocks-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stocks-title-section {
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .btn-add-stock {
+    width: 100%;
+  }
+
+  .search-input {
+    min-width: 100%;
+  }
+
+  .stocks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stock-detail-header h1 {
+    font-size: 24px;
+  }
+
+  .stock-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stocks-container {
+    padding: 15px 10px;
+  }
+
+  .stocks-header {
+    margin-bottom: 20px;
+  }
+
+  .btn-add-stock {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .search-input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .success-message {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .stock-card {
+    padding: 15px;
+  }
+
+  .stock-card-header h3 {
+    font-size: 16px;
+  }
+
+  .period-filter {
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 }
