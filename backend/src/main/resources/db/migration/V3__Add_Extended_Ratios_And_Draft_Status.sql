@@ -17,24 +17,24 @@ ALTER TABLE financial_data ADD COLUMN published_at TIMESTAMP;
 
 -- Create audit logs table
 CREATE TABLE audit_logs (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     entity_type VARCHAR(100) NOT NULL,
     entity_id BIGINT NOT NULL,
     action VARCHAR(50) NOT NULL,
     user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    old_values LONGTEXT,
-    new_values LONGTEXT,
+    old_values TEXT,
+    new_values TEXT,
     remarks TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create saved screeners table
 CREATE TABLE saved_screeners (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    filter_json LONGTEXT NOT NULL,
+    filter_json TEXT NOT NULL,
     is_public BOOLEAN NOT NULL DEFAULT false,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP

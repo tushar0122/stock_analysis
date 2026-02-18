@@ -1,7 +1,7 @@
 -- V1__Initial_Schema.sql
 
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE stocks (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     symbol VARCHAR(20) NOT NULL UNIQUE,
     sector VARCHAR(100),
@@ -24,34 +24,40 @@ CREATE TABLE stocks (
 );
 
 CREATE TABLE financial_data (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     stock_id BIGINT NOT NULL REFERENCES stocks(id) ON DELETE CASCADE,
     period_type VARCHAR(20) NOT NULL,
     year INTEGER NOT NULL,
     quarter INTEGER,
-    pe DECIMAL(10, 2),
-    pb DECIMAL(10, 2),
-    ps DECIMAL(10, 2),
-    peg DECIMAL(10, 2),
-    roe DECIMAL(10, 2),
-    roa DECIMAL(10, 2),
-    roic DECIMAL(10, 2),
-    debt_equity DECIMAL(10, 2),
-    debt_assets DECIMAL(10, 2),
-    interest_coverage DECIMAL(10, 2),
-    asset_turnover DECIMAL(10, 2),
-    receivables_turnover DECIMAL(10, 2),
-    inventory_turnover DECIMAL(10, 2),
-    revenue_growth DECIMAL(10, 2),
-    earnings_growth DECIMAL(10, 2),
-    book_value_growth DECIMAL(10, 2),
+    pe DOUBLE PRECISION,
+    pb DOUBLE PRECISION,
+    ps DOUBLE PRECISION,
+    peg DOUBLE PRECISION,
+    ev_ebitda DOUBLE PRECISION,
+    dividend_yield DOUBLE PRECISION,
+    roe DOUBLE PRECISION,
+    roa DOUBLE PRECISION,
+    roic DOUBLE PRECISION,
+    roce DOUBLE PRECISION,
+    debt_equity DOUBLE PRECISION,
+    debt_assets DOUBLE PRECISION,
+    interest_coverage DOUBLE PRECISION,
+    current_ratio DOUBLE PRECISION,
+    asset_turnover DOUBLE PRECISION,
+    receivables_turnover DOUBLE PRECISION,
+    inventory_turnover DOUBLE PRECISION,
+    revenue_growth DOUBLE PRECISION,
+    earnings_growth DOUBLE PRECISION,
+    book_value_growth DOUBLE PRECISION,
+    is_draft BOOLEAN NOT NULL DEFAULT true,
+    published_at TIMESTAMP,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(stock_id, period_type, year, quarter)
 );
 
 CREATE TABLE watchlists (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -60,7 +66,7 @@ CREATE TABLE watchlists (
 );
 
 CREATE TABLE watchlist_items (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     watchlist_id BIGINT NOT NULL REFERENCES watchlists(id) ON DELETE CASCADE,
     stock_id BIGINT NOT NULL REFERENCES stocks(id) ON DELETE CASCADE,
     added_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
