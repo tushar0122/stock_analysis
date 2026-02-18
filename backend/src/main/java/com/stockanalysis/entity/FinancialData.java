@@ -94,10 +94,7 @@ public class FinancialData {
     private Double revenueGrowth; // Revenue Growth %
 
     @Column(nullable = true)
-    private Double profitGrowth; // Profit Growth %
-
-    @Column(nullable = true)
-    private Double epsGrowth; // EPS Growth %
+    private Double earningsGrowth; // Earnings Growth %
 
     @Column(nullable = true)
     private Double bookValueGrowth; // Book Value Growth %

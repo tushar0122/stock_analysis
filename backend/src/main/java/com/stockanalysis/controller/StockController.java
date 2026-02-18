@@ -5,7 +5,6 @@ import com.stockanalysis.service.StockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -36,19 +35,16 @@ public class StockController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public StockDTO createStock(@RequestBody StockDTO stockDTO) {
         return stockService.createStock(stockDTO);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public StockDTO updateStock(@PathVariable Long id, @RequestBody StockDTO stockDTO) {
         return stockService.updateStock(id, stockDTO);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public void deleteStock(@PathVariable Long id) {
         stockService.deleteStock(id);
     }

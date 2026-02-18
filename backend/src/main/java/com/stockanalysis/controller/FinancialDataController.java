@@ -4,7 +4,6 @@ import com.stockanalysis.dto.FinancialDataDTO;
 import com.stockanalysis.entity.enums.PeriodType;
 import com.stockanalysis.service.FinancialDataService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,13 +33,11 @@ public class FinancialDataController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public FinancialDataDTO createOrUpdate(@RequestBody FinancialDataDTO financialDataDTO) {
         return financialDataService.createOrUpdate(financialDataDTO);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable Long id) {
         financialDataService.delete(id);
     }

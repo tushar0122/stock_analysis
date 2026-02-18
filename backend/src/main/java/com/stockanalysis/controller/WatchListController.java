@@ -3,8 +3,6 @@ package com.stockanalysis.controller;
 import com.stockanalysis.dto.WatchListDTO;
 import com.stockanalysis.service.WatchListService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +15,8 @@ public class WatchListController {
     private final WatchListService watchListService;
 
     @GetMapping
-    public List<WatchListDTO> getMyWatchLists(Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        // In a real scenario, we'd fetch the userId from the database
-        // For now, using a placeholder logic
-        return List.of();
+    public List<WatchListDTO> getMyWatchLists(@RequestParam Long userId) {
+        return watchListService.getWatchListsByUser(userId);
     }
 
     @PostMapping

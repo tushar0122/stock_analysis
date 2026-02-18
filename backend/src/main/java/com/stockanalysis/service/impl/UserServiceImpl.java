@@ -7,21 +7,19 @@ import com.stockanalysis.exception.ResourceNotFoundException;
 import com.stockanalysis.repository.UserRepository;
 import com.stockanalysis.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDTO register(String username, String email, String password) {
         User user = User.builder()
                 .username(username)
                 .email(email)
-                .password(passwordEncoder.encode(password))
+                .password(password)
                 .role(UserRole.USER)
                 .active(true)
                 .build();

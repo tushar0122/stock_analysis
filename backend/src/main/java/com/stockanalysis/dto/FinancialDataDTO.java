@@ -46,10 +46,11 @@ public class FinancialDataDTO {
 
     // Growth Ratios
     private Double revenueGrowth;
-    private Double profitGrowth;
-    private Double epsGrowth;
+    private Double earningsGrowth;
     private Double bookValueGrowth;
 
     // Draft & Publish
     private Boolean isDraft;
     private LocalDateTime publishedAt;
+
+}

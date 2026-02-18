@@ -3,7 +3,6 @@ package com.stockanalysis.controller;
 import com.stockanalysis.dto.UploadResponseDTO;
 import com.stockanalysis.service.CsvUploadService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +14,6 @@ public class UploadController {
     private final CsvUploadService csvUploadService;
 
     @PostMapping("/financial-data")
-    @PreAuthorize("hasRole('ADMIN')")
     public UploadResponseDTO uploadFinancialData(@RequestParam("file") MultipartFile file) {
         return csvUploadService.uploadFinancialData(file);
     }
