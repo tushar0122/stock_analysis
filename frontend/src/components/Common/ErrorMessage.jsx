@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/error.css';
+import '../../styles/error.css';
 
 const ErrorMessage = ({ message, onClose }) => {
   if (!message) return null;
