@@ -1,0 +1,17 @@
+.screener-results {
+  padding: 20px 0;
+}
+
+.screener-results h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.results-table {
+  overflow-x: auto;
+  margin-bottom: 30px;
+}
+
+.results-table tr:first-child {
+  background-color: var(--background-color);
+}

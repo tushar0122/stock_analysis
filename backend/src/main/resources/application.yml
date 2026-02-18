@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: stock-analysis-platform
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stock_analysis_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  error:
+    include-message: always
+    include-binding-errors: always
+
+jwt:
+  secret: your-super-secret-key-change-this-in-production-make-it-very-long
+  expiration: 86400000
+
+logging:
+  level:
+    root: INFO
+    com.stockanalysis: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG

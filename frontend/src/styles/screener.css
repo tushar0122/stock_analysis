@@ -1,0 +1,149 @@
+.screener-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.screener-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.filter-panel {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.results-panel {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  min-height: 400px;
+}
+
+.filter-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-builder h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.operator-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.operator-selector label {
+  font-weight: 600;
+}
+
+.operator-selector select {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.conditions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.condition-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 80px 70px;
+  gap: 10px;
+  align-items: center;
+}
+
+.field-select,
+.comparison-select,
+.value-input {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.btn-remove {
+  padding: 6px 12px;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-add-condition {
+  padding: 10px;
+  background-color: var(--background-color);
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: background-color 0.3s;
+}
+
+.btn-add-condition:hover {
+  background-color: var(--hover-color);
+}
+
+.screener-results {
+  padding: 20px 0;
+}
+
+.screener-results h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.results-table {
+  overflow-x: auto;
+}
+
+.results-table table {
+  width: 100%;
+}
+
+.btn-view {
+  padding: 6px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.btn-view:hover {
+  background-color: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+  .screener-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-panel {
+    position: static;
+  }
+
+  .condition-row {
+    grid-template-columns: 1fr;
+  }
+}

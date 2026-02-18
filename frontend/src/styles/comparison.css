@@ -1,0 +1,134 @@
+.comparison-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.comparison-container h1 {
+  margin-bottom: 30px;
+}
+
+.comparison-layout {
+  display: grid;
+  grid-template-columns: 300px 250px;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.stock-selector {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.stock-selector h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stock-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.stock-checkbox:hover {
+  background-color: var(--hover-color);
+}
+
+.stock-checkbox input {
+  cursor: pointer;
+}
+
+.stock-checkbox span {
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.selected-stocks {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.selected-stocks h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.selected-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  min-height: 150px;
+}
+
+.selected-item {
+  background-color: var(--background-color);
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.selected-stocks .btn-primary {
+  width: 100%;
+}
+
+.comparison-table {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+  margin-top: 30px;
+}
+
+.comparison-table h2 {
+  margin-bottom: 20px;
+}
+
+.comparison-table table {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .comparison-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-stocks {
+    position: static;
+  }
+}
