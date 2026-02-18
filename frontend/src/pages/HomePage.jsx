@@ -1,28 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import authService from '../services/authService';
 import '../styles/home.css';
 
 const HomePage = () => {
-  const isAuthenticated = authService.isAuthenticated();
-
   return (
     <div className="home-page">
       <section className="hero">
         <h1>📈 Stock Analysis & Screening Platform</h1>
         <p>Analyze, filter, and compare stocks using comprehensive financial ratios</p>
 
-        {isAuthenticated ? (
-          <div className="hero-actions">
-            <Link to="/stocks" className="btn-primary">View Stocks</Link>
-            <Link to="/screener" className="btn-secondary">Open Screener</Link>
-          </div>
-        ) : (
-          <div className="hero-actions">
-            <Link to="/login" className="btn-primary">Login</Link>
-            <Link to="/register" className="btn-secondary">Register</Link>
-          </div>
-        )}
+        <div className="hero-actions">
+          <Link to="/stocks" className="btn-primary">View Stocks</Link>
+          <Link to="/screener" className="btn-secondary">Open Screener</Link>
+        </div>
       </section>
 
       <section className="features">

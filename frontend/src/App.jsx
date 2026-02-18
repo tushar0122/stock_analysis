@@ -1,15 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import ProtectedRoute from './components/Common/ProtectedRoute';
+
 
 // Pages
 import HomePage from './pages/HomePage';
 import NotFound from './pages/NotFound';
-
-// Auth Components
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
 
 // Stock Components
 import StockList from './components/Stock/StockList';
@@ -34,9 +30,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
 
@@ -45,47 +38,27 @@ function App() {
 
           <Route
             path="/screener"
-            element={
-              <ProtectedRoute>
-                <StockScreener />
-              </ProtectedRoute>
-            }
+            element={<StockScreener />}
           />
 
           <Route
             path="/watchlist"
-            element={
-              <ProtectedRoute>
-                <WatchlistView />
-              </ProtectedRoute>
-            }
+            element={<WatchlistView />}
           />
 
           <Route
             path="/comparison"
-            element={
-              <ProtectedRoute>
-                <StockComparison />
-              </ProtectedRoute>
-            }
+            element={<StockComparison />}
           />
 
           <Route
             path="/data-entry"
-            element={
-              <ProtectedRoute requiredRole="ADMIN">
-                <ManualEntry />
-              </ProtectedRoute>
-            }
+            element={<ManualEntry />}
           />
 
           <Route
             path="/bulk-upload"
-            element={
-              <ProtectedRoute requiredRole="ADMIN">
-                <BulkUpload />
-              </ProtectedRoute>
-            }
+            element={<BulkUpload />}
           />
 
           <Route path="*" element={<NotFound />} />
