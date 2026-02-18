@@ -1,20 +1,5 @@
 -- V3__Add_Extended_Ratios_And_Draft_Status.sql
 
--- Add new columns to financial_data
-ALTER TABLE financial_data ADD COLUMN ev_ebitda DECIMAL(10, 2);
-ALTER TABLE financial_data ADD COLUMN dividend_yield DECIMAL(10, 2);
-ALTER TABLE financial_data ADD COLUMN roce DECIMAL(10, 2);
-ALTER TABLE financial_data ADD COLUMN current_ratio DECIMAL(10, 2);
-ALTER TABLE financial_data ADD COLUMN profit_growth DECIMAL(10, 2);
-ALTER TABLE financial_data ADD COLUMN eps_growth DECIMAL(10, 2);
-
--- Rename earnings_growth to be consistent
-ALTER TABLE financial_data RENAME COLUMN earnings_growth TO book_value_growth_alt;
-
--- Add draft and publish tracking
-ALTER TABLE financial_data ADD COLUMN is_draft BOOLEAN NOT NULL DEFAULT true;
-ALTER TABLE financial_data ADD COLUMN published_at TIMESTAMP;
-
 -- Create audit logs table
 CREATE TABLE audit_logs (
     id BIGSERIAL PRIMARY KEY,
